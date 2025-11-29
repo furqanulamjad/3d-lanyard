@@ -8,7 +8,7 @@ import { useControls } from 'leva'
 
 extend({ MeshLineGeometry, MeshLineMaterial })
 
-useGLTF.preload('/tag.glb')
+useGLTF.preload('/3d/tag.glb')
 useTexture.preload('https://assets.vercel.com/image/upload/contentful/image/e5382hct74si/SOT1hmCesOHxEYxL7vkoZ/c57b29c85912047c414311723320c16b/band.jpg')
 
 export default function App() {
