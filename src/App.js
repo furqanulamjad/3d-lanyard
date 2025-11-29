@@ -62,7 +62,7 @@ export default function App() {
           scale={[100, 0.1, 1]}
         />
         <Lightformer
-          intensity={10}
+          intensity={0}
           color="white"
           position={[-10, 0, 14]}
           rotation={[0, Math.PI / 2, Math.PI / 3]}
@@ -160,7 +160,7 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
 
   return (
     <>
-      <group position={[0, 4, 0]}>
+      <group position={[0, 4.1, 0]}>
         <RigidBody ref={fixed} {...segmentProps} type="fixed" />
         <RigidBody position={[0.5, 0, 0]} ref={j1} {...segmentProps}>
           <BallCollider args={[0.1]} />
