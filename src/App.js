@@ -1,7 +1,7 @@
 import * as THREE from 'three'
 import { useEffect, useRef, useState } from 'react'
 import { Canvas, useThree, useFrame } from '@react-three/fiber'
-import { useGLTF, useTexture } from '@react-three/drei'
+import { useGLTF, useTexture, Environment } from '@react-three/drei'
 import { Physics, RigidBody, useRopeJoint, useSphericalJoint, BallCollider, CuboidCollider } from '@react-three/rapier'
 import { MeshLineGeometry, MeshLineMaterial } from 'meshline'
 import { useControls } from 'leva'
@@ -13,14 +13,19 @@ export default function App() {
   const { debug } = useControls({ debug: false })
 
   return (
-    <Canvas
-      camera={{ position: [0, 0, 13], fov: 25 }}
-      style={{ background: 'black' }} // pure black background
-    >
+    <Canvas camera={{ position: [0, 0, 13], fov: 25 }} style={{ background: 'black' }}>
+      {/* Keep ambient light so the lanyard is visible */}
       <ambientLight intensity={Math.PI} />
+
+      {/* Physics for the lanyard */}
       <Physics debug={debug} interpolate gravity={[0, -40, 0]} timeStep={1 / 60}>
         <Band />
       </Physics>
+
+      {/* Environment kept for subtle reflections, no Lightformers */}
+      <Environment background={false} blur={0.75}>
+        <color attach="background" args={['black']} />
+      </Environment>
     </Canvas>
   )
 }
