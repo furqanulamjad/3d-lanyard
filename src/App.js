@@ -27,7 +27,6 @@ useTexture.preload(
 );
 
 export default function App() {
-  const { debug } = useControls({ debug: false });
   return (
     <Canvas camera={{ position: [0, 0, 13], fov: 25 }}>
       <ambientLight intensity={Math.PI} />
